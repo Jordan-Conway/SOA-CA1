@@ -1,0 +1,17 @@
+﻿@page "/BookFinder"
+@using CA2.Code
+
+<h3>Component</h3>
+
+<button @onclick="MakeRequest">Make request</button>
+
+@code {
+	BookService bookService = new();
+
+	public void MakeRequest()
+	{
+		Console.WriteLine("Making request");
+		var response = bookService.getBooks("Cooking");
+		Console.WriteLine(response.Content);
+	}
+}

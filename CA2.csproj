@@ -1,9 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>4c16de71-475d-46ee-bd71-02bcd125b65a</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="sampleResponse.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="sampleResponse.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="112.1.0" />
+  </ItemGroup>
 
 </Project>
