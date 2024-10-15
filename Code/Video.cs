@@ -3,8 +3,8 @@
 	public class Video
 	{
 		private string _title;
-		private string _description;
-		private string[] _tags;
+		private string? _description;
+		private string[]? _tags;
 
 		public Video(string title)
 		{

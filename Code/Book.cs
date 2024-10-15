@@ -3,11 +3,11 @@
 	public class Book
 	{
 		private string _title;
-		private string _subtitle;
-		private string[] _authors;
-		private bool _isMature;
-		private string _image;
-		private string _link;
+		private string? _subtitle;
+		private string[]? _authors;
+		private bool? _isMature;
+		private string? _image;
+		private string? _link;
 
 		public Book(string title)
 		{
