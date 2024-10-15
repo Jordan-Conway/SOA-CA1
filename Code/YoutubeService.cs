@@ -9,13 +9,13 @@ namespace CA2.Code
 		static readonly string URL = "https://www.googleapis.com/youtube/v3/videos?";
 		static RestClient Client = new RestClient(URL);
 
-		ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
-		IConfiguration configuration;
+		ConfigurationBuilder ConfigurationBuilder = new ConfigurationBuilder();
+		IConfiguration Configuration;
 		private readonly string API_KEY;
 
 		public YoutubeService() 
 		{
-			IConfiguration configuration = configurationBuilder.AddUserSecrets<Program>().Build();
+			IConfiguration configuration = ConfigurationBuilder.AddUserSecrets<Program>().Build();
 			API_KEY = configuration.GetSection("google")["GoogleApiKey"];
 		}
 
