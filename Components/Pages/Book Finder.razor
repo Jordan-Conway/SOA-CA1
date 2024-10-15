@@ -3,15 +3,24 @@
 
 <h3>Component</h3>
 
-<button @onclick="MakeRequest">Make request</button>
+<button @onclick="MakeBookRequest">Make book request</button>
+<button @onclick="MakeYoutubeRequest">Make Youtube request</button>
 
 @code {
 	BookService bookService = new();
+	YoutubeService youtubeService = new();
 
-	public void MakeRequest()
+	public void MakeBookRequest()
 	{
 		Console.WriteLine("Making request");
 		var response = bookService.getBooks("Cooking");
+		Console.WriteLine(response.Content);
+	}
+
+	public void MakeYoutubeRequest()
+	{
+		Console.WriteLine("Making request");
+		var response = youtubeService.getVideo("https://www.youtube.com/watch?v=_2cbf1ixygk");
 		Console.WriteLine(response.Content);
 	}
 }

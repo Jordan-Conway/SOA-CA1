@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="sampleResponse.json" />
+    <Content Remove="sampleBookResponse.json" />
+    <Content Remove="SampleYoutubeResponse.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="sampleResponse.json" />
+    <None Include="sampleBookResponse.json" />
+    <None Include="SampleYoutubeResponse.json" />
   </ItemGroup>
 
   <ItemGroup>
