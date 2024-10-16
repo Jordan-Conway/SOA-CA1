@@ -2,9 +2,12 @@
 @using CA2.Code
 
 <div class="bookList">
-	@foreach(Book book in books)
+	@if (books != null)
 	{
-		<BookDisplay BookToDisplay="@book"></BookDisplay>
+		@foreach (Book book in books)
+		{
+			<BookDisplay BookToDisplay="@book"></BookDisplay>
+		}
 	}
 </div>
 

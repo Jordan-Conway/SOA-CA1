@@ -5,18 +5,17 @@
 <h3>Component</h3>
 
 <button @onclick="MakeBookRequest">Make book request</button>
-<button @onclick="MakeYoutubeRequest">Make Youtube request</button>
 
-<input id="youtubeURLInput" type="text" @bind-value="youtubeURL"/>
-<button id="searchButton" @onclick="MakeYoutubeRequest">Go</button>
+<CascadingValue Value="videoTags" Name="VideoTagsValue">
+	<CA2.Components.Layout.VideoFinder OnTagsChanged="@OnTagsChanged"></CA2.Components.Layout.VideoFinder>
+</CascadingValue>
+
 
 <CA2.Components.Layout.BookList></CA2.Components.Layout.BookList>
 
 @code {
 	BookService bookService = new();
-	YoutubeService youtubeService = new();
-
-	string youtubeURL = "";
+	string[] videoTags;
 
 	public void MakeBookRequest()
 	{
@@ -25,15 +24,17 @@
 		Console.WriteLine(response.Content);
 	}
 
-	public void MakeYoutubeRequest()
+	public void Print(string input)
 	{
-		if(youtubeURL.Equals(""))
-		{
-			youtubeURL = "https://www.youtube.com/watch?v=_2cbf1ixygk";
-		}
+		Console.WriteLine(input);
+	}
 
-		Console.WriteLine("Making request");
-		var response = youtubeService.getVideo(youtubeURL);
-		Console.WriteLine(response.Content);
+	private void OnTagsChanged(string[] tags)
+	{
+		videoTags = tags;
+		foreach(string tag in tags)
+		{
+			Console.WriteLine(tag);
+		}
 	}
 }

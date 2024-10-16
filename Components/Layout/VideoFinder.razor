@@ -1,0 +1,54 @@
+﻿@using CA2.Code
+@using Newtonsoft.Json.Linq
+
+<input id="youtubeURLInput" type="text" @bind-value="youtubeURL" />
+<button id="searchButton" @onclick="Search">Go</button>
+
+@code {
+	[CascadingParameter(Name = "VideoTagsValue")]
+	string[] VideoTags { get; set; }
+
+	[Parameter]
+	public EventCallback<string[]> OnTagsChanged { get; set; }
+
+
+	YoutubeService youtubeService = new();
+
+	string youtubeURL = "";
+
+	public async void Search()
+	{
+		RestSharp.RestResponse response = MakeYoutubeRequest();
+		await ChangeVideoTags(response);
+	}
+
+	public RestSharp.RestResponse MakeYoutubeRequest()
+	{
+		if (youtubeURL.Equals(""))
+		{
+			youtubeURL = "https://www.youtube.com/watch?v=_2cbf1ixygk";
+		}
+
+		Console.WriteLine("Making request to Youtube");
+		var response = youtubeService.getVideo(youtubeURL);
+
+		return response;
+	}
+
+	async Task ChangeVideoTags(RestSharp.RestResponse response)
+	{
+		var obj = JObject.Parse(response.Content);
+		Console.WriteLine(obj);
+		string[]? temp;
+		try
+		{
+			temp = obj["items"][0]["snippet"]["tags"].ToObject<string[]>();
+			VideoTags = temp;
+			await OnTagsChanged.InvokeAsync(VideoTags);
+		}
+		catch(NullReferenceException e)
+		{
+			Console.WriteLine("Youtube response did not contain tags field");
+		}
+	}
+}

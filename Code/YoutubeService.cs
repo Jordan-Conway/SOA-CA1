@@ -27,6 +27,7 @@ namespace CA2.Code
 			//https://www.youtube.com/watch?v=_2cbf1ixygk
 
 			//Parse url to get video id
+			//TODO Catch System.UriFormatException
 			Uri youtubeUri = new Uri(videoUrl);
 			string videoID = HttpUtility.ParseQueryString(youtubeUri.Query).Get("v");
 
