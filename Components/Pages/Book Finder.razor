@@ -1,10 +1,13 @@
 ﻿@page "/BookFinder"
 @using CA2.Code
+@using CA2.Components
 
 <h3>Component</h3>
 
 <button @onclick="MakeBookRequest">Make book request</button>
 <button @onclick="MakeYoutubeRequest">Make Youtube request</button>
+
+<CA2.Components.Layout.BookDisplay></CA2.Components.Layout.BookDisplay>
 
 @code {
 	BookService bookService = new();

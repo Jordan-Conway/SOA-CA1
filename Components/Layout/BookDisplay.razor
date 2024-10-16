@@ -1,0 +1,36 @@
+﻿@using CA2.Code
+
+<button @onclick="bookTest">loadBook</button>
+@if(BookToDisplay != null)
+{
+	<div class="bookDisplay" title="@BookToDisplay.Subtitle">
+		<a class="bookLink" href="@BookToDisplay.Link" target="_blank">
+			<img class="bookCover" src="@BookToDisplay.Image" />
+			<p class="bookTitle">@BookToDisplay.Title</p>
+			<div class="bookAuthors">
+				@foreach (string author in BookToDisplay.Authors)
+				{
+					<p class="authorName">@author</p>
+				}
+			</div>
+		</a>
+	</div>
+}
+
+
+@code {
+	[Parameter]
+	public Book BookToDisplay { get; set; }
+
+	public void bookTest()
+	{
+		Book book = new Book("Just Married");
+		book.Subtitle = "A Cookbook for Newlyweds";
+		book.Authors = ["Caroline Chambers"];
+		book.IsMature = false;
+		book.Image = "http://books.google.com/books/content?id=zY5iDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api";
+		book.Link = "https://play.google.com/store/books/details?id=zY5iDwAAQBAJ&source=gbs_api";
+
+		BookToDisplay = book;
+	}
+}

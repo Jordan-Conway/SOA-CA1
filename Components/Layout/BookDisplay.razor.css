@@ -1,0 +1,28 @@
+﻿.bookDisplay
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookLink 
+{
+    text-decoration: none;
+}
+
+.authorName, .bookTitle
+{
+    text-align: center;
+    color: black;
+}
+
+.authorName 
+{
+    font-size: 65%;
+}
+
+.bookTitle
+{
+    margin-bottom: 0;
+}
