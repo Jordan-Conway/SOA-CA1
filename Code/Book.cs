@@ -12,6 +12,7 @@
 		public Book(string title)
 		{
 			_title = title;
+			_authors = [];
 		}
 
 		public string Title { get; set; }
