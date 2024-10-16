@@ -1,0 +1,14 @@
+﻿@using CA2.Components.Layout
+@using CA2.Code
+
+<div class="bookList">
+	@foreach(Book book in books)
+	{
+		<BookDisplay BookToDisplay="@book"></BookDisplay>
+	}
+</div>
+
+@code {
+	[Parameter]
+	public Book[] books { get; set; }
+}

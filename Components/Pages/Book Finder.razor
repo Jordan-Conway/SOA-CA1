@@ -7,11 +7,16 @@
 <button @onclick="MakeBookRequest">Make book request</button>
 <button @onclick="MakeYoutubeRequest">Make Youtube request</button>
 
-<CA2.Components.Layout.BookDisplay></CA2.Components.Layout.BookDisplay>
+<input id="youtubeURLInput" type="text" @bind-value="youtubeURL"/>
+<button id="searchButton" @onclick="MakeYoutubeRequest">Go</button>
+
+<CA2.Components.Layout.BookList></CA2.Components.Layout.BookList>
 
 @code {
 	BookService bookService = new();
 	YoutubeService youtubeService = new();
+
+	string youtubeURL = "";
 
 	public void MakeBookRequest()
 	{
@@ -22,8 +27,13 @@
 
 	public void MakeYoutubeRequest()
 	{
+		if(youtubeURL.Equals(""))
+		{
+			youtubeURL = "https://www.youtube.com/watch?v=_2cbf1ixygk";
+		}
+
 		Console.WriteLine("Making request");
-		var response = youtubeService.getVideo("https://www.youtube.com/watch?v=_2cbf1ixygk");
+		var response = youtubeService.getVideo(youtubeURL);
 		Console.WriteLine(response.Content);
 	}
 }
