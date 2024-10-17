@@ -1,10 +1,11 @@
 ﻿@page "/BookFinder"
 @using CA2.Code
 @using CA2.Components
+@using Newtonsoft.Json.Linq
 
 <h3>Component</h3>
 
-<button @onclick="MakeBookRequest">Make book request</button>
+<button @onclick="() => MakeBookRequest()">Make book request</button>
 
 <CascadingValue Value="videoTags" Name="VideoTagsValue">
 	<CA2.Components.Layout.VideoFinder OnTagsChanged="@OnTagsChanged"></CA2.Components.Layout.VideoFinder>
@@ -14,18 +15,20 @@
 	<CA2.Components.Layout.TagList Tags="videoTags" OnSelectedTagChanged="@OnSelectedTagChanged"></CA2.Components.Layout.TagList>
 </CascadingValue>
 
-<CA2.Components.Layout.BookList></CA2.Components.Layout.BookList>
+<CA2.Components.Layout.BookList books="@books"></CA2.Components.Layout.BookList>
 
 @code {
 	BookService bookService = new();
+	string testTag = "Cooking";
+	Book[]? books;
 	string[]? videoTags;
 	string? selectedTag;
 
-	public void MakeBookRequest()
+	public void MakeBookRequest(string tag = "Cooking")
 	{
 		Console.WriteLine("Making request");
-		var response = bookService.getBooks("Cooking");
-		Console.WriteLine(response.Content);
+		var response = bookService.getBooks(tag);
+		books = bookService.parseRespone(JObject.Parse(response.Content));
 	}
 
 	public void Print(string input)

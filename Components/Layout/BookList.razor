@@ -1,7 +1,12 @@
 ﻿@using CA2.Components.Layout
 @using CA2.Code
+@using System.Text.Json
+@using Microsoft.AspNetCore.Mvc
+@inject IJSRuntime JS
+
 
 <div class="bookList">
+	<button @onclick="ExportToFile">Export to File</button>
 	@if (books != null)
 	{
 		@foreach (Book book in books)
@@ -12,6 +17,15 @@
 </div>
 
 @code {
-	[Parameter]
-	public Book[] books { get; set; }
+    [Parameter]
+    public Book[] books { get; set; }
+
+    public async Task ExportToFile()
+    {
+        //Create JSON file and download
+        string fileName = "Exports/books.json";
+        string jsonString = JsonSerializer.Serialize(books);
+
+        System.IO.File.WriteAllText(fileName, jsonString);
+    }
 }
