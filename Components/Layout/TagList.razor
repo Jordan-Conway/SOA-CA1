@@ -1,4 +1,6 @@
-﻿<div class="tagList">
+﻿@using CA2.Code
+
+<div class="tagList">
 	<button @onclick="AddTestTags">Add Test Tags</button>
 	@if(Tags != null)
 	{
@@ -17,12 +19,12 @@
 	string? SelectedTag { get; set; }
 
 	[Parameter]
-	public EventCallback<string> OnSelectedTagChanged { get; set; }
+	public EventCallback<Data> OnSelectedTagChanged { get; set; }
 
 	async Task ChangeSelectedTag(string tag)
 	{
 		SelectedTag = tag;
-		await OnSelectedTagChanged.InvokeAsync(SelectedTag);
+		await OnSelectedTagChanged.InvokeAsync(new Data(SelectedTag, Tags));
 	}
 
 	public async void ChangeTag(string tag)

@@ -18,8 +18,8 @@
 
 @code {
 	BookService bookService = new();
-	string[] videoTags;
-	string selectedTag;
+	string[]? videoTags;
+	string? selectedTag;
 
 	public void MakeBookRequest()
 	{
@@ -42,9 +42,11 @@
 		}
 	}
 
-	private void OnSelectedTagChanged(string tag)
+	private void OnSelectedTagChanged(Data data)
 	{
-		selectedTag = tag;
-		Console.WriteLine($"Selected Tag is now: {tag}");
+		selectedTag = data.SelectedTag;
+		//The content of videoTags will be lost, so it needs to be set again here
+		videoTags = data.Tags;
+		Console.WriteLine($"Selected Tag is now: {data.SelectedTag}");
 	}
 }
