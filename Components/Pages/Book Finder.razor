@@ -3,19 +3,22 @@
 @using CA2.Components
 @using Newtonsoft.Json.Linq
 
-<h3>Component</h3>
+<div class="content">
+	<h3 id="title">Book Finder</h3>
 
-<button @onclick="() => MakeBookRequest()">Make book request</button>
+	<!-- <button @onclick="() => MakeBookRequest()">Make book request</button> -->
 
-<CascadingValue Value="videoTags" Name="VideoTagsValue">
-	<CA2.Components.Layout.VideoFinder OnTagsChanged="@OnTagsChanged"></CA2.Components.Layout.VideoFinder>
-</CascadingValue>
+	<CascadingValue Value="videoTags" Name="VideoTagsValue">
+		<CA2.Components.Layout.VideoFinder OnTagsChanged="@OnTagsChanged"></CA2.Components.Layout.VideoFinder>
+	</CascadingValue>
 
-<CascadingValue Value="selectedTag" Name="SelectedTag">
-	<CA2.Components.Layout.TagList Tags="videoTags" OnSelectedTagChanged="@OnSelectedTagChanged"></CA2.Components.Layout.TagList>
-</CascadingValue>
+	<CascadingValue Value="selectedTag" Name="SelectedTag">
+		<CA2.Components.Layout.TagList Tags="videoTags" OnSelectedTagChanged="@OnSelectedTagChanged"></CA2.Components.Layout.TagList>
+	</CascadingValue>
 
-<CA2.Components.Layout.BookList books="@books"></CA2.Components.Layout.BookList>
+	<CA2.Components.Layout.BookList books="@books"></CA2.Components.Layout.BookList>
+</div>
+
 
 @code {
 	BookService bookService = new();
@@ -51,5 +54,6 @@
 		//The content of videoTags will be lost, so it needs to be set again here
 		videoTags = data.Tags;
 		Console.WriteLine($"Selected Tag is now: {data.SelectedTag}");
+		MakeBookRequest(data.SelectedTag);
 	}
 }
