@@ -10,12 +10,16 @@
 	<CA2.Components.Layout.VideoFinder OnTagsChanged="@OnTagsChanged"></CA2.Components.Layout.VideoFinder>
 </CascadingValue>
 
+<CascadingValue Value="selectedTag" Name="SelectedTag">
+	<CA2.Components.Layout.TagList Tags="videoTags" OnSelectedTagChanged="@OnSelectedTagChanged"></CA2.Components.Layout.TagList>
+</CascadingValue>
 
 <CA2.Components.Layout.BookList></CA2.Components.Layout.BookList>
 
 @code {
 	BookService bookService = new();
 	string[] videoTags;
+	string selectedTag;
 
 	public void MakeBookRequest()
 	{
@@ -36,5 +40,11 @@
 		{
 			Console.WriteLine(tag);
 		}
+	}
+
+	private void OnSelectedTagChanged(string tag)
+	{
+		selectedTag = tag;
+		Console.WriteLine($"Selected Tag is now: {tag}");
 	}
 }

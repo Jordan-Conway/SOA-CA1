@@ -1,0 +1,38 @@
+﻿<div class="tagList">
+	<button @onclick="AddTestTags">Add Test Tags</button>
+	@if(Tags != null)
+	{
+		@foreach(string tag in Tags)
+		{
+			<p class="tagBox" @onclick="() => ChangeTag(tag)">@tag</p>
+		}
+	}
+</div>
+
+@code {
+	[Parameter]
+	public string[]? Tags { get; set; }
+
+	[CascadingParameter(Name = "SelectedTag")]
+	string? SelectedTag { get; set; }
+
+	[Parameter]
+	public EventCallback<string> OnSelectedTagChanged { get; set; }
+
+	async Task ChangeSelectedTag(string tag)
+	{
+		SelectedTag = tag;
+		await OnSelectedTagChanged.InvokeAsync(SelectedTag);
+	}
+
+	public async void ChangeTag(string tag)
+	{
+		await ChangeSelectedTag(tag);
+	}
+
+	private void AddTestTags()
+	{
+		Tags = ["one", "two", "three"];
+	}
+
+}
