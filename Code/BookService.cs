@@ -60,15 +60,15 @@ namespace CA2.Code
 					
 					if(isMature == null)
 					{
-						newBook.IsMature = MaturityRating.NA;
+						newBook.IsMature = false;
 					}
 					else if(isMature.ToObject<string>().Equals("NOT_MATURE"))
 					{
-						newBook.IsMature = MaturityRating.NOTMATURE;
+						newBook.IsMature = false;
 					}
 					else
 					{
-						newBook.IsMature = MaturityRating.MATURE;
+						newBook.IsMature = true;
 					}
 
 					newBook.Image = image == null ? "" : image.ToObject<string>();
