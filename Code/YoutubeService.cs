@@ -9,7 +9,8 @@ namespace CA2.Code
 		static readonly string URL = "https://www.googleapis.com/youtube/v3/videos?";
 		static RestClient Client = new RestClient(URL);
 
-		ConfigurationBuilder ConfigurationBuilder = new ConfigurationBuilder();
+        //Based on https://stackoverflow.com/a/75443396
+        ConfigurationBuilder ConfigurationBuilder = new ConfigurationBuilder();
 		IConfiguration Configuration;
 		private readonly string API_KEY;
 

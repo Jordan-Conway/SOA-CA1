@@ -23,6 +23,7 @@
     public async Task ExportToFile()
     {
         //Create JSON file and download
+        //Based on https://stackoverflow.com/a/40443939
         string fileName = "Exports/books.json";
         string jsonString = JsonSerializer.Serialize(books);
 

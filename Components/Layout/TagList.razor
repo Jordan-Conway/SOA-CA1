@@ -15,6 +15,7 @@
 	[Parameter]
 	public string[]? Tags { get; set; }
 
+	//All use of cascading parameters and event callbacks based on https://stackoverflow.com/a/76938304
 	[CascadingParameter(Name = "SelectedTag")]
 	string? SelectedTag { get; set; }
 
