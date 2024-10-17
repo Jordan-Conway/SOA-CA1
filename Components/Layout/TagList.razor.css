@@ -1,0 +1,28 @@
+﻿.tagList{
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.tagBox{
+    display: flex;
+    flex-direction: column;
+    border: solid 2px black;
+    border-radius: 15px;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-content: center;
+    width: 30%;
+    background-color: cadetblue;
+    color: snow;
+}
+
+.tagBox > p {
+    max-width: 80%;
+    align-self: center;
+    justify-self: center;
+}

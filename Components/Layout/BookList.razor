@@ -4,17 +4,21 @@
 @using Microsoft.AspNetCore.Mvc
 @inject IJSRuntime JS
 
-
-<div class="bookList">
-	<button @onclick="ExportToFile">Export to File</button>
-	@if (books != null)
-	{
-		@foreach (Book book in books)
-		{
-			<BookDisplay BookToDisplay="@book"></BookDisplay>
-		}
-	}
+<div class="books">
+    <div class="bookList">
+        @if (books != null)
+        {
+            @foreach (Book book in books)
+            {
+                <BookDisplay BookToDisplay="@book"></BookDisplay>
+            }
+        }
+    </div>
+    <div class="exportButton">
+        <button @onclick="ExportToFile">Export to File</button>
+    </div>
 </div>
+
 
 @code {
     [Parameter]

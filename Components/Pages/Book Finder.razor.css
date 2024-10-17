@@ -1,0 +1,16 @@
+﻿.content{
+    display:flex;
+    flex-direction: column;
+    width:80%;
+    height:80%;
+    align-content: center;
+    justify-content: center;
+}
+
+.content > *{
+    margin-bottom: 2px;
+}
+
+#title{
+    text-align: center
+}

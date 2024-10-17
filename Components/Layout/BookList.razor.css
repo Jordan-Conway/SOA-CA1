@@ -1,0 +1,21 @@
+﻿.books{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+
+.bookList{
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+
+.bookList > div{
+    width: 100%;
+}
+
+.exportButton{
+    display:flex;
+    justify-content: end;
+}

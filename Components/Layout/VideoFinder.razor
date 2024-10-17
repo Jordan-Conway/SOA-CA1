@@ -1,8 +1,11 @@
 ﻿@using CA2.Code
 @using Newtonsoft.Json.Linq
 
-<input id="youtubeURLInput" type="text" @bind-value="youtubeURL" />
-<button id="searchButton" @onclick="Search">Go</button>
+<div id="videoFinder">
+	<input id="youtubeURLInput" type="text" @bind-value="youtubeURL" placeholder="Enter Youtube URL Here" />
+	<button id="searchButton" @onclick="Search">Go</button>
+</div>
+
 
 @code {
 	[CascadingParameter(Name = "VideoTagsValue")]

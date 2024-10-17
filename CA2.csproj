@@ -15,6 +15,7 @@
   <ItemGroup>
     <None Include="sampleBookResponse.json" />
     <None Include="SampleYoutubeResponse.json" />
+    <None Include="wwwroot\Media\no_cover_thumb.png" />
   </ItemGroup>
 
   <ItemGroup>
