@@ -4,20 +4,21 @@
 @using Microsoft.AspNetCore.Mvc
 @inject IJSRuntime JS
 
-<div class="books">
-    <div class="bookList">
-        @if (books != null)
+@if(books != null)
+{
+    <div class="books">
+        <div class="bookList">
+         @foreach (Book book in books)
         {
-            @foreach (Book book in books)
-            {
-                <BookDisplay BookToDisplay="@book"></BookDisplay>
-            }
+            <BookDisplay BookToDisplay="@book"></BookDisplay>
         }
+        </div>
+        <div class="exportButton">
+            <button @onclick="ExportToFile">Export to File</button>
+        </div>
     </div>
-    <div class="exportButton">
-        <button @onclick="ExportToFile">Export to File</button>
-    </div>
-</div>
+}
+
 
 
 @code {
