@@ -6,7 +6,7 @@
     justify-content: space-around;
 }
 
-.tagBox{
+.tagBox, .selectedTagBox{
     display: flex;
     flex-direction: column;
     border: solid 2px black;
@@ -19,6 +19,10 @@
     width: 30%;
     background-color: cadetblue;
     color: snow;
+}
+
+.selectedTagBox{
+    background-color: navy;
 }
 
 .tagBox > p {
