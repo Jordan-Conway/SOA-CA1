@@ -4,7 +4,14 @@
 {
 	<div class="bookDisplay" title="@BookToDisplay.Subtitle">
 		<a class="bookLink" href="@BookToDisplay.Link" target="_blank">
-			<img class="bookCover" src="@BookToDisplay.Image" />
+			@if(BookToDisplay.Image == "")
+			{
+				<img class="bookCover" src="/Media/no_cover_thumb.png" />
+			}
+			else
+			{
+				<img class="bookCover" src="@BookToDisplay.Image" />
+			}
 			<p class="bookTitle">@BookToDisplay.Title</p>
 			<div class="bookAuthors">
 				@foreach (string author in BookToDisplay.Authors)

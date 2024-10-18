@@ -41,7 +41,7 @@ namespace CA2.Code
 					JToken? subtitle = item["volumeInfo"]["subtitle"];
 					JToken? authors = item["volumeInfo"]["authors"];
 					JToken? isMature = item["volumeInfo"]["maturityRating"];
-					JToken? image = item["volumeInfo"]["imageLinks"]["thumbnail"];
+					JToken? images = item["volumeInfo"]["imageLinks"];
 					JToken? link = item["volumeInfo"]["infoLink"];
 
 					Book newBook;
@@ -71,7 +71,7 @@ namespace CA2.Code
 						newBook.IsMature = MaturityRating.MATURE;
 					}
 
-					newBook.Image = image == null ? "" : image.ToObject<string>();
+					newBook.Image = images == null ? "" : images["thumbnail"].ToObject<string>();
 					newBook.Link = link == null ? "" : link.ToObject<string>();
 
 					books.Add(newBook);

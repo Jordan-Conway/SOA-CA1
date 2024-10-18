@@ -1,12 +1,15 @@
 ﻿@using CA2.Code
 
 <div class="tagList">
-	<button @onclick="AddTestTags">Add Test Tags</button>
+	<!-- <button @onclick="AddTestTags">Add Test Tags</button> -->
 	@if(Tags != null)
 	{
 		@foreach(string tag in Tags)
 		{
-			<p class="tagBox" @onclick="() => ChangeTag(tag)">@tag</p>
+			<div class="@(tag.Equals(SelectedTag) ? "selectedTagBox" : "tagBox")" @onclick="() => ChangeTag(tag)">
+				<p>@tag</p>
+			</div>
+			
 		}
 	}
 </div>

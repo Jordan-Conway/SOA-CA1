@@ -71,8 +71,11 @@ main {
     }
 
     .top-row, article {
+        display: flex;
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
+        align-content: center;
+        justify-content: center;
     }
 }
 

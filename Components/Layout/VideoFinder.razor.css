@@ -1,0 +1,20 @@
+﻿#videoFinder {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#youtubeURLInput{
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 80%;
+    align-self: center;
+}
+
+#searchButton{
+    border-radius: 15px;
+    width: 25%;
+}
